@@ -3,6 +3,7 @@ import pygame
 import math
 
 from game import board
+from main import size
 
 window_inner_size = 600
 window_margin = 10
@@ -34,9 +35,9 @@ def draw_rect(rect, color):
     pygame.draw.rect(screen, color, rect)
 
 def draw_tile(num, x, y):
-    draw_rect(pygame.Rect(x, y, window_inner_size / 4, window_inner_size / 4), get_color(num))
+    draw_rect(pygame.Rect(x, y, window_inner_size / size, window_inner_size / size), get_color(num))
     draw_line((x, window_margin / 2), (x, y + window_inner_size / 4))
-    offset = ((window_inner_size / 4) - 36) / 2
+    offset = ((window_inner_size / size) - 36) / 2
     draw_text(num if num else " ", x + offset, y + offset)
 
 def draw():
@@ -46,6 +47,6 @@ def draw():
         x = window_margin / 2
         for square in row:
             draw_tile(square, x, y)
-            x += window_inner_size / 4
+            x += window_inner_size / size
         draw_line((window_margin / 2, y), (window_inner_size + window_margin / 2, y))
-        y += window_inner_size / 4
+        y += window_inner_size / size

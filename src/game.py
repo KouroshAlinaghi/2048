@@ -1,23 +1,18 @@
 import copy
 import random
 
-from main import LEFT, RIGHT, UP, DOWN
+from main import LEFT, RIGHT, UP, DOWN, size
 
-board = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-]
+board = [[0 for j in range(size)] for i in range(size)]
 prev_board = copy.deepcopy(board)
 
 random.seed()
 
 score = 0
-empties = 4 * 4
 
 def seed(tiles):
     global board
+    tiles = int(tiles)
     for time in range(tiles):
         i, j = random.randint(0, 3), random.randint(0, 3)
         while board[i][j]:
@@ -27,20 +22,19 @@ def seed(tiles):
 
 def is_loser():
     global board
-    for i in range(4):
-        for j in range(3):
+    for i in range(size):
+        for j in range(size-1):
             if not board[i][j] or not board[i][j+1]:
                 return False
             if board[i][j] == board[i][j+1]:
                 return False
 
-    for j in range(4):
-        for i in range(3):
+    for j in range(size):
+        for i in range(size-1):
             if board[i][j] == board[i+1][j]:
                 return False
 
     return True
-
 
 def move_right():
     global board
@@ -56,6 +50,7 @@ def move_right():
                     board[i][k+1] *= 2
                     score += board[i][k+1]
                     board[i][k] = 0
+                    break
                 elif board[i][k] != board[i][k+1]:
                     break
 
@@ -73,6 +68,7 @@ def move_left():
                     board[i][k-1] *= 2
                     score += board[i][k-1]
                     board[i][k] = 0
+                    break
                 elif board[i][k] != board[i][k-1]:
                     break
 
@@ -90,6 +86,7 @@ def move_down():
                     board[k+1][j] *= 2
                     score += board[k+1][j]
                     board[k][j] = 0
+                    break
                 elif board[k][j] != board[k+1][j]:
                     break
 
@@ -107,6 +104,7 @@ def move_up():
                     board[k-1][j] *= 2
                     score += board[k-1][j]
                     board[k][j] = 0
+                    break
                 elif board[k][j] != board[k-1][j]:
                     break
 

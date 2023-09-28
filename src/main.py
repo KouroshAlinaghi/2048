@@ -5,6 +5,8 @@ from gui import *
 from game import *
 import game
 
+size = 4
+
 RIGHT, UP, LEFT, DOWN = range(4)
 keys_map = {
     1073741904: LEFT,
@@ -17,7 +19,7 @@ def main():
     global prev_board
     global board
 
-    seed(2)
+    seed(size/2)
     running = True
 
     while running:
@@ -38,7 +40,7 @@ def main():
             moved = prev_board != board
 
         if moved:
-            seed(1)
+            seed(size/4)
             if is_loser():
                 print("You are a loser.")
                 pygame.quit()
