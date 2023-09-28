@@ -3,8 +3,7 @@
 ![moz](./screenshot.png "a title")
 
 ## Running the game
-bro just run
+Run the following command, you can also play in a `n`*`n` grid by passing `n` as the command line argument (default: 4)
 ```
-python ./src/main.py
+python ./src/main.py 6
 ```
-bro trust me bro just run the command and the game will start bro fr
