@@ -7,10 +7,11 @@ from main import size
 
 window_inner_size = 600
 window_margin = 10
+font_size = int((window_inner_size / size) / 6)
 
 pygame.init()
 clock = pygame.time.Clock()
-font = pygame.font.Font(pygame.font.get_default_font(), 36)
+font = pygame.font.Font(pygame.font.get_default_font(), font_size)
 screen = pygame.display.set_mode((window_inner_size + window_margin, window_inner_size + window_margin + 100))
 
 def get_color(num):
@@ -24,7 +25,7 @@ def get_color(num):
 
 def draw_text(text, x, y):
     text = str(text)
-    font = pygame.font.Font(pygame.font.get_default_font(), 36)
+    font = pygame.font.Font(pygame.font.get_default_font(), font_size)
     text = font.render(text, True, (0, 0, 0))
     screen.blit(text, (x, y))
 
@@ -37,7 +38,7 @@ def draw_rect(rect, color):
 def draw_tile(num, x, y):
     draw_rect(pygame.Rect(x, y, window_inner_size / size, window_inner_size / size), get_color(num))
     draw_line((x, window_margin / 2), (x, y + window_inner_size / 4))
-    offset = ((window_inner_size / size) - 36) / 2
+    offset = ((window_inner_size / size) - font_size) / 2
     draw_text(num if num else " ", x + offset, y + offset)
 
 def draw():

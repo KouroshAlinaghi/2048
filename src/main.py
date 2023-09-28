@@ -1,11 +1,15 @@
 import pygame
 import copy
+import sys
+
+if len(sys.argv) > 1:
+    size = int(sys.argv[1])
+else:
+    size = 4
 
 from gui import *
 from game import *
 import game
-
-size = 4
 
 RIGHT, UP, LEFT, DOWN = range(4)
 keys_map = {
@@ -19,7 +23,7 @@ def main():
     global prev_board
     global board
 
-    seed(size/2)
+    seed(max(size/2, 2))
     running = True
 
     while running:
@@ -40,7 +44,7 @@ def main():
             moved = prev_board != board
 
         if moved:
-            seed(size/4)
+            seed(max(1, size/4))
             if is_loser():
                 print("You are a loser.")
                 pygame.quit()
