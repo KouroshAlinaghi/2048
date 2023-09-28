@@ -50,7 +50,7 @@ def main():
                 pygame.quit()
 
         screen.fill("white")
-        draw_text("SCORE: {0}".format(game.score), 60, 40)
+        draw_text("SCORE: {0}".format(game.score), 60, 40, 36)
         draw()
 
         pygame.display.flip()

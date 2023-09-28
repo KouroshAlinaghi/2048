@@ -23,9 +23,9 @@ def get_color(num):
     b = (25/8)*(x - 8)**2 + 50
     return (r, g, b)
 
-def draw_text(text, x, y):
+def draw_text(text, x, y, text_size = font_size):
     text = str(text)
-    font = pygame.font.Font(pygame.font.get_default_font(), font_size)
+    font = pygame.font.Font(pygame.font.get_default_font(), text_size)
     text = font.render(text, True, (0, 0, 0))
     screen.blit(text, (x, y))
 
