@@ -17,7 +17,7 @@ def main():
     global prev_board
     global board
 
-    sow_state()
+    seed(2)
     running = True
 
     while running:
@@ -38,7 +38,7 @@ def main():
             moved = prev_board != board
 
         if moved:
-            seed()
+            seed(1)
             if is_loser():
                 print("You are a loser.")
                 pygame.quit()

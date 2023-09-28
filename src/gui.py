@@ -33,7 +33,7 @@ def draw_line(s, d):
 def draw_rect(rect, color):
     pygame.draw.rect(screen, color, rect)
 
-def draw_cell(num, x, y):
+def draw_tile(num, x, y):
     draw_rect(pygame.Rect(x, y, window_inner_size / 4, window_inner_size / 4), get_color(num))
     draw_line((x, window_margin / 2), (x, y + window_inner_size / 4))
     offset = ((window_inner_size / 4) - 36) / 2
@@ -45,7 +45,7 @@ def draw():
     for row in board:
         x = window_margin / 2
         for square in row:
-            draw_cell(square, x, y)
+            draw_tile(square, x, y)
             x += window_inner_size / 4
         draw_line((window_margin / 2, y), (window_inner_size + window_margin / 2, y))
         y += window_inner_size / 4

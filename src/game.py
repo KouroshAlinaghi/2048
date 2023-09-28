@@ -16,29 +16,14 @@ random.seed()
 score = 0
 empties = 4 * 4
 
-def sow_state():
+def seed(tiles):
     global board
-    global empties
+    for time in range(tiles):
+        i, j = random.randint(0, 3), random.randint(0, 3)
+        while board[i][j]:
+            i, j = random.randint(0, 3), random.randint(0, 3)
 
-    for i in range(4):
-        for j in range(4):
-            if random.random() < 0.15:
-                empties -= 1
-                board[i][j] = (4 if random.random() > 7.0 else 2)
-
-    if empties == 4 * 4:
-        sow_state()
-
-def seed():
-    global board
-    global empties
-    old = copy.deepcopy(board)
-    for i in range(4):
-        for j in range(4):
-            if not board[i][j] and random.random() < 0.1:
-                board[i][j] = (4 if random.random() > 7.0 else 2)
-    if (board == old):
-        seed()
+        board[i][j] = (4 if random.random() > 9.0 else 2)
 
 def is_loser():
     global board
