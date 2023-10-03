@@ -125,6 +125,10 @@ class Game:
             moved = False
             pushed = False
 
+            if self.is_loser():
+                print("You are a loser.")
+                exit(0)
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
@@ -139,9 +143,6 @@ class Game:
                 moved = self.prev_board != self.board
 
             if moved:
-                if self.is_loser():
-                    print("You are a loser.")
-                    pygame.quit()
                 self.seed(max(1, self.size/4))
 
             gui.refresh_and_draw(self.board, self.score)
